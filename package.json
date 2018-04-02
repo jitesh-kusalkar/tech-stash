@@ -1,0 +1,21 @@
+{
+  "name": "tech-stash",
+  "version": "1.0.0",
+  "description": "TechStash",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "body-parser": "*",
+    "cors": "^2.8.4",
+    "express": "*",
+    "express-jwt": "^5.3.1",
+    "jsonwebtoken": "^8.2.0",
+    "mongoose": "*",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0"
+  },
+  "author": "Jitesh Kusalkar",
+  "license": "ISC"
+}

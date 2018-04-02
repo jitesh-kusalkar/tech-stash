@@ -1,0 +1,88 @@
+<div class="app-container">
+    <div class="cover">
+        <div class="overlay"></div>
+        <img src="assets/images/user.jpg" alt="" class="user-profile">
+    </div>
+    <div class="body mt-5 row">
+        <div class="col-md-6 col-lg-5 menu-panel">
+            <tab-view>
+                <tab tabTitle="Boards">
+                    <div class="content">
+                        <div class="item">
+                            <ul class="list">
+                                <li *ngFor="let group of user.posts">
+                                    <div class="board-icon">B</div><span class="board-name">{{ group.name }}</span></li>
+                                <li class="add-group" *ngIf="!user.groups.length" (click)="openModal()">
+                                    <i class="fa fa-plus add-group-icon" aria-hidden="true"></i><span class="add-group-text">Add Group</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </tab>
+                <tab tabTitle="Followers"></tab>
+                <tab tabTitle="Following"></tab>
+                <tab tabTitle="About"></tab>
+            </tab-view>
+        </div>
+        <div class="col-md-6 col-lg-7 main-panel">
+            <tab-view>
+                <tab tabTitle="Activities">
+                    <div class="content">
+                        <div class="item">
+                            <div *ngFor="let post of user.activity" class="stash-card">
+                                <header class="stash-card-header">
+                                    <!-- <div class="entity-icon">
+                                        <i class="fa fa-users" aria-hidden="true"></i>
+                                    </div> -->
+                                    <img src="assets/images/user.jpg" alt="User">
+                                    <div class="entity-info">
+                                        <span class="name" *ngIf="post.username">{{ post.username }}</span>
+                                        <span class="connector" *ngIf="post.username">&nbsp;<i class="fa fa-circle" aria-hidden="true"></i>&nbsp;</span>
+                                        <span class="group" [ngClass]="{'name': !post.username}">{{ post.groupName }}</span>
+                                        <p class="post-date">{{ post.postDate | date }}</p>
+                                    </div>
+                                </header>
+                                <section class="stash-card-body">
+                                    <p class="post original clip-text" *ngIf="post.originalPost">
+                                        {{ post.originalPost }}
+                                    </p>
+                                    <p class="post clip-text">
+                                        {{ post.post }}
+                                    </p>
+                                </section>
+                                <footer class="stash-card-footer">
+                                    <span class="like"><i class="fa fa-thumbs-up" aria-hidden="true"></i> {{ post.like }} <span class="show-for-medium-up">Likes</span></span>
+                                    <span class="comment"><i class="fa fa-comment" aria-hidden="true"></i> {{ post.comments.length }} <span class="show-for-medium-up">Comments</span></span>
+                                    <span class="comment"><i class="fa fa-share-alt" aria-hidden="true"></i> {{ post.share }} <span class="show-for-medium-up">Share</span></span>
+                                    <span class="show-post pull-right"><i class="fa fa-external-link" aria-hidden="true"></i>&nbsp;<a class="show-for-medium-up" href="javascript:void(0)" [routerLink]="['/group', post.groupId]" >Show post</a></span>
+                                </footer>
+                            </div>
+                        </div>
+                        <div *ngIf="!user.activity" class="item">
+                            <div class="stash-card no-content">Nothing to display</div>
+                        </div>
+                    </div>
+                </tab>
+                <tab tabTitle="What's New">
+                    <div class="content">
+                        <div *ngIf="!user.update" class="item">
+                            <div class="stash-card no-content">Nothing to display</div>
+                        </div>
+                    </div>
+                </tab>
+            </tab-view>
+        </div>
+    </div>
+    <app-modal [showModal]="showModal" [showModalHeader]="true" [showModalFooter]="true" (closeModalCallback)="closeModal" >
+        <modal-header>
+            <h4>Create Group</h4>
+        </modal-header>
+        <modal-body>
+            <input type="text" name="searchUser" id="search-user">
+        </modal-body>
+        <modal-footer>
+            <button type="button" class="btn btn-primary">Create</button>
+            <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+        </modal-footer>
+    </app-modal>
+</div>

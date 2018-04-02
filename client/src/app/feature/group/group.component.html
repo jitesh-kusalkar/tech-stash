@@ -1,0 +1,56 @@
+<div class="app-container">
+    <div class="group-cover">
+        <div class="group-icon"></div>
+        <div class="info">
+            <h4 class="group-name">{{ group.groupName }}</h4>
+            <p class="group-tag-line clip-text">{{ group.groupDescription }}</p>
+        </div>
+    </div>
+    <div class="body mt-5 row">
+        <div class="col-md-6 col-lg-5 menu-panel">
+            <tab-view>
+                <tab tabTitle="Members"></tab>
+                <tab tabTitle="Other Boards"></tab>
+                <tab tabTitle="About"></tab>
+            </tab-view>
+        </div>
+        <div class="col-md-6 col-lg-7 main-panel">
+            <tab-view>
+                <tab tabTitle="All conversations">
+                    <div class="content">
+                        <section class="text-editor">
+                            <tab-view navType="nav-pointer">
+                                <tab tabTitle="Update" icon="fa-commenting-o">
+                                    <div class="content">
+                                        <form (ngSubmit)="submitPost()" autocomplete="off">
+                                            <div class="form-control comment-box" name="update" id="update" (input)="update = $event.target.innerText" data-placeholder="Share something with this group" contenteditable="true"></div>
+                                            <button class="btn btn-primary mt-3" type="submit">Sumbit</button>
+                                        </form>
+                                    </div>
+                                </tab>
+                                <tab tabTitle="Poll" icon="fa-bar-chart">
+                                    <div class="content">
+                                        <input type="text" class="form-control comment-box" placeholder="Poll title">
+                                    </div>
+                                </tab>
+                                <tab tabTitle="Announcement" icon="fa-bullhorn">
+                                    <div class="content">
+                                        <input type="text" class="form-control comment-box" placeholder="What do you want to announce?">
+                                    </div>
+                                </tab>
+                            </tab-view>
+                        </section>
+                    </div>
+                    <div class="content">
+                        <section class="post-section">
+                            This is for post section
+                        </section>
+                    </div>
+                </tab>
+                <tab tabTitle="Unread conversations">
+                    This is unread coversations tab content
+                </tab>
+            </tab-view>
+        </div>
+    </div>
+</div>

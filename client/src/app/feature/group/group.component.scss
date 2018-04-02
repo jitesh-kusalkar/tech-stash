@@ -1,0 +1,75 @@
+@import '../../../assets/variable';
+:host {
+    .group-cover {
+        position: relative;
+        padding: 15px 5%;
+        background-color: var(--blue);
+        color: var(--white);
+        text-align: center;
+
+        @media screen and (min-width: $small-viewport){
+            text-align: initial;
+        }
+
+        .group-name {
+            color: var(--white);
+            font-weight: 400;
+        }
+
+        /deep/ .nav-link {
+            color: var(--white);
+            font-weight: 400;
+            font-size: 14px;
+            text-transform: uppercase;
+
+            &.active {
+                border-bottom-color: var(--white);
+                border-bottom-width: 1px;
+            }
+        }
+    }
+    .info {
+        display: block;
+
+        @media screen and (min-width: $small-viewport){
+            display: inline-block;
+            vertical-align: baseline;
+            margin-left: 15px;
+            width: calc(100% - 170px);
+        }
+    }
+    .group-icon {
+        background: url('/assets/images/group-icon.png') no-repeat;
+        width: 150px;
+        height: 150px;
+        background-size: 100%;
+        background-position-y: center;
+        display: inline-block;
+        border: 3px solid var(--white);
+        box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.3);
+    }
+    .group-tag-line {
+        margin: 0;
+        font-style: italic;
+    }
+    .text-editor {
+        background-color: var(--white);
+        box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+        
+        .content {
+            padding: 10px 15px;
+    
+            .comment-box {
+                border-color: var(--blue);
+                padding: 20px 15px;
+                box-shadow: none;
+            }
+        }
+    }
+
+    [contenteditable=true]:empty:before{
+        content: attr(data-placeholder);
+        display: block; /* For Firefox */
+        color: var(--gray);
+    }
+}

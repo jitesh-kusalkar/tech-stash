@@ -1,0 +1,19 @@
+<div class="login-page">
+  <div class="form">
+    <form class="register-form" autocomplete="off" *ngIf="signup" (ngSubmit)="register(registerForm)" #registerForm="ngForm">
+      <input type="text" name="firstname" [(ngModel)]="registerUserForm.firstname" placeholder="First name" required #firstname/>
+      <input type="text" name="lastname" [(ngModel)]="registerUserForm.lastname" placeholder="Last name" required #lastname/>
+      <input type="text" name="username" [(ngModel)]="registerUserForm.username" placeholder="Username" required #username/>
+      <input type="password" name="password" [(ngModel)]="registerUserForm.password" placeholder="Password" required #password/>
+      <input type="text" name="emailId" [(ngModel)]="registerUserForm.emailId" placeholder="Email address" required #emailId/>
+      <button type="submit">create</button>
+      <p class="message">Already registered? <a href="javascript:void(0)" (click)="toggleForm()">Sign In</a></p>
+    </form>
+    <form class="login-form" autocomplete="off" *ngIf="!signup" (ngSubmit)="login(loginForm)" #loginForm="ngForm">
+      <input type="text" name="username" [(ngModel)]="loginUserForm.username" placeholder="Username" required #username/>
+      <input type="password" name="password" [(ngModel)]="loginUserForm.password" placeholder="Password" required #password/>
+      <button type="submit">login</button>
+      <p class="message">Not registered? <a href="javascript:void(0)" (click)="toggleForm()">Create an account</a></p>
+    </form>
+  </div>
+</div>

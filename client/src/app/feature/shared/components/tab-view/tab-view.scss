@@ -1,0 +1,63 @@
+@import '../../../../../assets/variable';
+:host {
+    .nav-underlines {
+        .nav-link {
+            color: var(--light-gray);
+            font-weight: 500;
+            padding: 8px 15px;
+    
+            @media screen and (min-width: $medium-viewport){
+                padding: 8px 15px;
+            }
+    
+            &.active {
+                color: var(--black);
+                border-bottom: 2px solid var(--light-blue);
+                padding: 8px 0;
+                margin: 0 15px 0;
+    
+                @media screen and (min-width: $medium-viewport) {
+                    padding: 8px 0;
+                    margin: 0 15px;
+                }
+            }
+        }
+    }
+
+    .nav-pointer {
+        .nav-item {
+            padding: 8px 15px;
+
+            .fa {
+                color: var(--light-gray);
+
+                &.active {
+                    color: var(--blue);
+                }
+            }
+        }
+        .nav-link {
+            color: var(--light-gray);
+            position: relative;
+            display: inline-block;
+            padding: 0;
+
+            &.active {
+                color: var(--blue);
+
+                &::after {
+                    content: '';
+                    width: 15px;
+                    height: 15px;
+                    border-top: 1px solid;
+                    border-left: 1px solid;
+                    position: absolute;
+                    right: calc(50% - 9px);
+                    top: 35px;
+                    background: white;
+                    transform: rotate(45deg);
+                }
+            }
+        }
+    }
+}
